@@ -10,7 +10,7 @@ import { AppState } from 'src/app/app.reducer';
 })
 export class SidebarComponent {
 
-  constructor(private auth: AuthService, private store: Store<AppState>) { }
+  constructor(public auth: AuthService, public store: Store<AppState>) { }
 
   cerrarSesion() {
     this.auth.cerrarSesion();

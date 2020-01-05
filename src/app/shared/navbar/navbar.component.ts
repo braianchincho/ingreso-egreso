@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   styles: []
 })
 export class NavbarComponent implements OnInit {
-  constructor( private store: Store<AppState>) { }
+  constructor( public store: Store<AppState>) { }
 
   ngOnInit() {
   

@@ -12,7 +12,7 @@ import { IngresoEgreso } from '../ingreso-egreso.model';
 export class DetalleComponent implements OnInit {
 
   constructor(
-    private store$: Store<AppState>,
+    public store$: Store<AppState>,
     public ingresoergrespoService: IngresoEgresoService
     ) { }
 

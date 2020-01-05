@@ -9,7 +9,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducer';
 import { ActivarLoadingAction, DesactivarLoadingAction } from '../shared/ui.actions';
-import { SetUserAction } from './auth.actions';
+import { SetUserAction, UnSetUserAction } from './auth.actions';
+import { UnSetItemsAction } from '../ingreso-egreso/ingreso-egreso.actions';
 
 
 @Injectable({
@@ -85,6 +86,8 @@ export class AuthService {
 
   cerrarSesion() {
     this.angularAuth.auth.signOut();
+    this.store$.dispatch(new UnSetUserAction());
+    this.store$.dispatch(new UnSetItemsAction());
     this.router.navigate(['/login']);
   }
   isAuth(): Observable<boolean> {

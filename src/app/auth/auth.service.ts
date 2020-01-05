@@ -16,7 +16,8 @@ import { SetUserAction } from './auth.actions';
   providedIn: 'root'
 })
 export class AuthService {
-  subscription: Subscription = new Subscription();;
+  subscription: Subscription = new Subscription();
+  private user: User;
   constructor(
     private angularAuth: AngularFireAuth, 
     private router: Router,
@@ -29,11 +30,14 @@ export class AuthService {
         if (res) {
           this.subscription =  this.afDB.doc(`${res.uid}/usuario`)
             .valueChanges().subscribe((user: any) => {
+              const userObj = new User( user.nombre, user.mail ,user.uid);
               this.store$.dispatch(
-               new SetUserAction( new User( user.nombre, user.mail ,user.uid))
+               new SetUserAction( userObj)
               )
+              this.user = userObj;
             });
         } else {
+          this.user = null;
           this.subscription.unsubscribe();
         }
     }); 
@@ -93,5 +97,9 @@ export class AuthService {
         return islogged;
       })
     )
+  }
+
+  getUser(): User {
+    return {...this.user};
   }
 }

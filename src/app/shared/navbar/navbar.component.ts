@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
+import { SubjectSubscriber } from 'rxjs/internal/Subject';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  constructor( private store: Store<AppState>) { }
 
   ngOnInit() {
+  
   }
+
 
 }

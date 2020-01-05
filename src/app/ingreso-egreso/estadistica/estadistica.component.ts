@@ -4,6 +4,7 @@ import { AppState } from 'src/app/app.reducer';
 import { Subscription } from 'rxjs';
 import { IngresoEgreso } from '../ingreso-egreso.model';
 import { Label, MultiDataSet } from 'ng2-charts';
+import { AppStateIE } from '../ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-estadistica',
@@ -20,11 +21,11 @@ export class EstadisticaComponent implements OnInit {
   public doughnutChartData = [];
 
   subscription = new Subscription();
-  constructor(private store$: Store<AppState>) { }
+  constructor(private store$: Store<AppStateIE>) { }
 
   ngOnInit() {
     this.subscription = this.store$
-      .select('items')
+      .select('ingresoEgreso')
       .subscribe(
         ingresosEgreso => {
           this.contarIngresosEgresos(ingresosEgreso.items);

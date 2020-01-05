@@ -15,7 +15,7 @@
               </thead>
 
               <tbody>
-                <tr *ngFor="let item of (store$ | async).items.items | ordenar: 'tipo'">
+                <tr *ngFor="let item of (store$ | async).ingresoEgreso.items | ordenar: 'tipo'">
                   <td>{{item.descripcion}}</td>
                   <td>{{item.monto}}</td>
                   <td [ngClass]="{

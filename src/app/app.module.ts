@@ -22,6 +22,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './app.reducer';
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,9 @@ import { appReducer } from './app.reducer';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
+    ChartsModule
   ],
+  exports: [ ChartsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
